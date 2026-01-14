@@ -1,9 +1,11 @@
+import 'package:demo_dio/config/DioConfig.dart';
 import 'package:demo_dio/model/response/Product.dart';
 import 'package:demo_dio/statemanagement/cubit/ProductCubit.dart';
 import 'package:demo_dio/statemanagement/state/ResponseError.dart';
 import 'package:demo_dio/statemanagement/state/ResponseLoading.dart';
 import 'package:demo_dio/statemanagement/state/ResponseStatus.dart';
 import 'package:demo_dio/statemanagement/state/ResponseSuccess.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../model/ui/ProductItem.dart';
@@ -20,11 +22,13 @@ class AllProductScreen extends StatefulWidget {
 class _AllProductScreenState extends State<AllProductScreen> {
   late ProductRepository repo;
   late ProductCubit cubit;
+  late Dio dio;
 
   @override
   void initState() {
     super.initState();
-    repo = ProductRepositoryImpl();
+    dio = DioConfig().dio;
+    repo = ProductRepositoryImpl(dio);
     cubit = ProductCubit(ResponseStatus(), repo: repo);
   }
 
