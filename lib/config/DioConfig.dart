@@ -13,7 +13,7 @@ handler.reject(): ép request lỗi
 + Gọi trong onError: thay thế thành lỗi của mình tạo, ko lấy của server nữa, code phía sau vẫn chạy
 
 InterceptorsWrapper: có thể được thực hiện đồng thời, nghĩa là tất cả các yêu cầu nhập vào trình chặn cùng một lúc, thay vì thực hiện tuần tự
-QueuedInterceptorsWrapper: cung cấp cơ chế truy cập tuần tự (từng cái một) cho các thiết bị chặn
+QueuedInterceptorsWrapper: cung cấp cơ chế truy cập tuần tự (từng cái một) cho các thiết bị chặn, 3 cái thì mỗi cái có 1 queue riêng
 */
 class DioConfig {
   final Dio dio;
