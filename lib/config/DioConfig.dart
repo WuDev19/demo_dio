@@ -11,6 +11,9 @@ handler.reject(): ép request lỗi
 + Gọi trong onRequest: ko gọi http đến server nữa, nhảy vào onError với Exception mình tạo, code phía sau vẫn chạy
 + Gọi trong onResponse: chuyển từ thành công sang lỗi, nhảy vào onError với Exception mình tạo, code phía sau vẫn chạy
 + Gọi trong onError: thay thế thành lỗi của mình tạo, ko lấy của server nữa, code phía sau vẫn chạy
+
+InterceptorsWrapper: có thể được thực hiện đồng thời, nghĩa là tất cả các yêu cầu nhập vào trình chặn cùng một lúc, thay vì thực hiện tuần tự
+QueuedInterceptorsWrapper: cung cấp cơ chế truy cập tuần tự (từng cái một) cho các thiết bị chặn
 */
 class DioConfig {
   final Dio dio;
