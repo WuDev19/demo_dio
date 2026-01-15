@@ -253,9 +253,12 @@ class _DioScreenState extends State<DioScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () async {
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(SnackBar(content: Text("data")));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("data"),
+                          backgroundColor: Colors.cyan,
+                        ),
+                      );
                       String ten = nameController.text;
                       int gia = int.parse(giaController.text);
                       String mota = motaController.text;
