@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         body: DioScreen(),
+        floatingActionButton: Flow(delegate: delegate)
       ),
     );
   }
