@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:demo_dio/model/response/Product.dart';
 

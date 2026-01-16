@@ -1,6 +1,4 @@
-import 'dart:convert';
 
-import 'package:demo_dio/config/DioConfig.dart';
 import 'package:demo_dio/model/request/ProductRequest.dart';
 import 'package:demo_dio/model/response/Product.dart';
 import 'package:demo_dio/repository/base/ProductRepository.dart';
