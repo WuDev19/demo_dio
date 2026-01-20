@@ -1,4 +1,5 @@
 import 'package:demo_dio/model/request/ProductRequest.dart';
+import 'package:demo_dio/model/response/Product.dart';
 import 'package:demo_dio/statemanagement/state/ResponseError.dart';
 import 'package:demo_dio/statemanagement/state/ResponseLoading.dart';
 import 'package:demo_dio/statemanagement/state/ResponseStatus.dart';
@@ -41,4 +42,9 @@ class ProductCubit extends Cubit<ResponseStatus> {
       emit(ResponseError(e));
     }
   }
+
+  void reloadProducts(List<Product> list){
+    emit(ResponseSuccess(list));
+  }
+
 }

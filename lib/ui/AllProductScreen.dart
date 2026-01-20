@@ -23,18 +23,18 @@ class _AllProductScreenState extends State<AllProductScreen> {
   late ProductRepository repo;
   late ProductCubit cubit;
   late Dio dio;
-
+  late final ScrollController scrollController;
   @override
   void initState() {
     super.initState();
     dio = DioConfig().dio;
     repo = ProductRepositoryImpl(dio);
     cubit = ProductCubit(ResponseStatus(), repo: repo);
+    scrollController = ScrollController();
   }
 
   @override
   Widget build(BuildContext context) {
-    print("build");
     return Scaffold(
       appBar: AppBar(title: Text("Products")),
       body: SizedBox(
@@ -61,14 +61,12 @@ class _AllProductScreenState extends State<AllProductScreen> {
                 }
                 if (state is ResponseSuccess) {
                   final list = state.data as List<Product>;
-                  print("build1");
                   return Expanded(
                     child: ListView.builder(
+                      controller: scrollController,
                       itemBuilder: (context, index) {
                         return ProductItem(
-                          url: list[index].thumbnail,
-                          tenSp: list[index].motaSp,
-                          tenShop: list[index].tenNguoiBan,
+                          product: list[index],
                           onClick: () {
                             showDialog(
                               context: context,
@@ -98,6 +96,10 @@ class _AllProductScreenState extends State<AllProductScreen> {
                                 );
                               },
                             );
+                          },
+                          onDismiss: (Product product) {
+                            list.remove(product);
+                            cubit.reloadProducts(list);
                           },
                         );
                       },

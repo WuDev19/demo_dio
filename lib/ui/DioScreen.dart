@@ -264,7 +264,6 @@ class _DioScreenState extends State<DioScreen> {
                       String mota = motaController.text;
                       String thumbnail = thumbnailController.text;
                       int giamGia = int.parse(giamGiaController.text);
-                      print("$ten + $gia");
                       final pr = ProductRequest(
                         tenNguoiBan: ten,
                         giaSp: gia,
@@ -311,12 +310,10 @@ class _DioScreenState extends State<DioScreen> {
                     current is ResponseLoading,
                 builder: (BuildContext context, ResponseStatus state) {
                   if (state is ResponseLoading) {
-                    print("loadind");
                     return CircularProgressIndicator();
                   }
                   if (state is ResponseSuccess) {
                     final data = state.data as Product;
-                    print(data);
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,

@@ -35,29 +35,30 @@ class DioConfig {
       InterceptorsWrapper(
         onRequest: (options, handler) {
           //thực thi trước khi gửi request cho server
-          print("hehe ${options.path} va ${options.queryParameters}");
-          if (options.path == "product/get/all") {
-            handler.reject(
-              DioException(
-                requestOptions: options,
-                message: "Permission denied",
-              ),
-            );
-            print("onRequest 1");
-          } else if (options.path == "product/${options.data}") {
-            handler.resolve(
-              Response(
-                requestOptions: options,
-                statusCode: 200,
-                data: "Success",
-              ),
-            );
-            print("onRequest 2");
-          } else {
-            handler.next(options);
-            print("onRequest 3");
-          }
-          print("onRequest 4");
+          // print("hehe ${options.path} va ${options.queryParameters}");
+          // if (options.path == "product/get/all") {
+          //   handler.reject(
+          //     DioException(
+          //       requestOptions: options,
+          //       message: "Permission denied",
+          //     ),
+          //   );
+          //   print("onRequest 1");
+          // } else if (options.path == "product/${options.data}") {
+          //   handler.resolve(
+          //     Response(
+          //       requestOptions: options,
+          //       statusCode: 200,
+          //       data: "Success",
+          //     ),
+          //   );
+          //   print("onRequest 2");
+          // } else {
+          //   handler.next(options);
+          //   print("onRequest 3");
+          // }
+          // print("onRequest 4");
+          handler.next(options);
         },
         onResponse: (response, handler) {
           //thực thi trước khi gửi response cho client

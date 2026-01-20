@@ -44,6 +44,45 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
             ),
           ),
         ),
+        endDrawer: Drawer(
+          backgroundColor: Colors.red,
+          child: ListView(
+            children: [
+              DrawerHeader(child: Text("Header")),
+              DropdownButton(
+                items: ["Cầu thủ", "Tiền đạo", "Thủ môn", "Hậu về", "Tiền vệ"]
+                    .map((e) {
+                      return DropdownMenuItem(
+                        value: e, // là giá trị trong items
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.lightGreen,
+                              borderRadius: BorderRadiusGeometry.all(
+                                Radius.elliptical(20, 20),
+                              ),
+                            ),
+                            child: Text(e),
+                          ),
+                        ), // cái mà mình muốn hiện lên view
+                        onTap: () {
+                          print("tap");
+                        },
+                      );
+                    })
+                    .toList(),
+                onChanged: (value) {
+                  print(value);
+                },
+                icon: Icon(Icons.ad_units),
+                dropdownColor: Colors.teal,
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+              ),
+            ],
+          ),
+        ),
         body: Stack(
           children: [
             DioScreen(),

@@ -15,20 +15,16 @@ class ProductRepositoryImpl implements ProductRepository {
       final response = await _dio.get("product/get/all");
       final List<dynamic> dataResponse =
           response.data; //ép về List<dynamic> mới map được
-      print(dataResponse);
       return dataResponse.map((e) => Product.fromJson(e)).toList();
     } on DioException catch (e) {
       switch (e.type) {
         case DioExceptionType.connectionTimeout:
           rethrow;
         case DioExceptionType.badResponse:
-          print("Lỗi server: ${e.response?.statusCode}");
           rethrow;
         case DioExceptionType.cancel:
-          print("Request bị huỷ");
           rethrow;
         default:
-          print("Lỗi không xác định");
           throw Exception("Lỗi không xác định");
       }
     }
@@ -39,7 +35,6 @@ class ProductRepositoryImpl implements ProductRepository {
     try {
       final response = await _dio.get("product/$id");
       final data = response.data;
-      print(data);
       return Product.fromJson(data);
     } on DioException {
       rethrow;
