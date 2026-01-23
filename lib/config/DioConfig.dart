@@ -66,7 +66,7 @@ class DioConfig {
           if (response.data is Product) {
             handler.reject(
               DioException(
-                requestOptions: RequestOptions(),
+                requestOptions: response.requestOptions,
                 message: "Bad request",
               ),
             );
